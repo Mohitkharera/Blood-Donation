@@ -1,0 +1,185 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/donors"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="editProfile()">
+        <ion-icon name="create" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="profile-content">
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="profile-avatar">
+      <ion-avatar>
+        <img [src]="userProfile.avatar || 'assets/default-avatar.png'" alt="Profile Picture">
+      </ion-avatar>
+      <ion-button fill="clear" class="edit-avatar-btn" (click)="changeAvatar()">
+        <ion-icon name="camera" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="profile-info">
+      <h1>{{ userProfile.name }}</h1>
+      <p class="user-role">{{ userProfile.role }}</p>
+      <div class="blood-group-badge">
+        <ion-icon name="water" class="blood-icon"></ion-icon>
+        {{ userProfile.bloodGroup }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="quick-stats">
+    <div class="stat-item">
+      <h3>{{ userProfile.totalDonations }}</h3>
+      <p>Total Donations</p>
+    </div>
+    <div class="stat-item">
+      <h3>{{ userProfile.lifesSaved }}</h3>
+      <p>Lives Saved</p>
+    </div>
+    <div class="stat-item">
+      <h3>{{ userProfile.lastDonation }}</h3>
+      <p>Last Donation</p>
+    </div>
+  </div>
+
+  <!-- Profile Sections -->
+  <div class="profile-sections">
+    <!-- Personal Information -->
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="person" class="section-icon"></ion-icon>
+          Personal Information
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="info-row">
+          <span class="label">Full Name</span>
+          <span class="value">{{ userProfile.name }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Email</span>
+          <span class="value">{{ userProfile.email }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Phone</span>
+          <span class="value">{{ userProfile.phone }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Date of Birth</span>
+          <span class="value">{{ userProfile.dateOfBirth }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Location</span>
+          <span class="value">{{ userProfile.location }}</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Medical Information -->
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="medical" class="section-icon"></ion-icon>
+          Medical Information
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="info-row">
+          <span class="label">Blood Group</span>
+          <span class="value blood-group">{{ userProfile.bloodGroup }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Weight</span>
+          <span class="value">{{ userProfile.weight }} kg</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Height</span>
+          <span class="value">{{ userProfile.height }} cm</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Medical Conditions</span>
+          <span class="value">{{ userProfile.medicalConditions || 'None' }}</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Donation History -->
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="calendar" class="section-icon"></ion-icon>
+          Recent Donations
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="donation-item" *ngFor="let donation of userProfile.recentDonations">
+          <div class="donation-date">
+            <ion-icon name="calendar-outline" class="date-icon"></ion-icon>
+            <span>{{ donation.date }}</span>
+          </div>
+          <div class="donation-location">
+            <ion-icon name="location-outline" class="location-icon"></ion-icon>
+            <span>{{ donation.location }}</span>
+          </div>
+          <div class="donation-amount">
+            <ion-icon name="water-outline" class="amount-icon"></ion-icon>
+            <span>{{ donation.amount }} ml</span>
+          </div>
+        </div>
+        <ion-button fill="clear" expand="block" (click)="viewAllDonations()">
+          View All Donations
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Settings -->
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="settings" class="section-icon"></ion-icon>
+          Settings
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item button (click)="changePassword()">
+            <ion-icon name="key" slot="start"></ion-icon>
+            <ion-label>Change Password</ion-label>
+            <ion-icon name="chevron-forward" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item button (click)="notificationSettings()">
+            <ion-icon name="notifications" slot="start"></ion-icon>
+            <ion-label>Notification Settings</ion-label>
+            <ion-icon name="chevron-forward" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item button (click)="privacySettings()">
+            <ion-icon name="shield" slot="start"></ion-icon>
+            <ion-label>Privacy Settings</ion-label>
+            <ion-icon name="chevron-forward" slot="end"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Logout Button -->
+  <div class="logout-section">
+    <ion-button 
+      expand="block" 
+      fill="outline" 
+      color="danger" 
+      class="logout-button"
+      (click)="logout()">
+      <ion-icon name="log-out" slot="start"></ion-icon>
+      Logout
+    </ion-button>
+  </div>
+</ion-content>

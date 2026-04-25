@@ -1,0 +1,94 @@
+<ion-content class="hospital-list-content">
+
+<!-- HEADER -->
+
+<div class="hero-section">
+
+<div class="hero-content">
+
+<h1>Donor List</h1>
+
+<p>Find available blood donors</p>
+
+</div>
+
+</div>
+
+<!-- SEARCH BAR -->
+
+<div class="search-wrapper">
+
+<ion-searchbar
+placeholder="Search donor by name..."
+[(ngModel)]="searchText"
+(ionInput)="searchDonor()">
+</ion-searchbar>
+
+</div>
+
+<!-- GRID -->
+
+<div class="hospital-section">
+
+<div class="hospital-grid">
+
+<ion-card class="hospital-card" *ngFor="let donor of donors">
+
+<ion-card-header>
+
+<ion-card-title>
+{{donor.name}}
+</ion-card-title>
+
+<ion-card-subtitle>
+{{donor.address}}
+</ion-card-subtitle>
+
+</ion-card-header>
+
+<ion-card-content>
+
+<div class="info-row">
+
+<div>
+<span class="label">Blood:</span>
+<span class="value">{{donor.bloodGroup}}</span>
+</div>
+
+<div>
+<span class="label">Type:</span>
+<span class="value donor-type" [ngClass]="donor.donorType === 'plasma' ? 'plasma' : 'blood'">{{donor.donorType === 'plasma' ? 'Plasma' : 'Blood'}}</span>
+</div>
+
+<div>
+<span class="label">Phone:</span>
+<span class="value">{{donor.phone}}</span>
+</div>
+
+</div>
+
+<div class="donor-actions">
+
+<ion-button size="small">
+Contact Donor
+</ion-button>
+
+<span
+class="status"
+[ngClass]="donor.available ? 'available' : 'not-available'">
+
+{{ donor.available ? 'Available' : 'Not Available' }}
+
+</span>
+
+</div>
+
+</ion-card-content>
+
+</ion-card>
+
+</div>
+
+</div>
+
+</ion-content>

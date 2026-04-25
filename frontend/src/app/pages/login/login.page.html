@@ -1,0 +1,107 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-wrapper">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <ion-icon name="water" class="logo-icon"></ion-icon>
+      <span class="logo-text">BloodLife</span>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card">
+      <!-- Header -->
+      <h1 class="login-title">Welcome Back</h1>
+      <p class="login-subtitle">Sign in to your hospital portal</p>
+
+      <!-- Form -->
+      <form class="login-form" (ngSubmit)="onLogin()">
+        <!-- Username Field -->
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <ion-item class="form-input-wrapper">
+            <ion-input 
+              type="text" 
+              [(ngModel)]="email" 
+              name="email"
+              class="form-input"
+              placeholder="Enter your username"
+              required>
+            </ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="password-input-wrapper">
+            <ion-item class="form-input-wrapper">
+              <ion-input 
+                [type]="showPassword ? 'text' : 'password'" 
+                [(ngModel)]="password" 
+                name="password"
+                class="form-input"
+                placeholder="Enter your password"
+                required>
+              </ion-input>
+            </ion-item>
+            <button 
+              type="button" 
+              class="password-toggle"
+              (click)="togglePassword()">
+              <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="toggle-icon"></ion-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div class="form-options">
+          <div class="remember-me">
+            <ion-checkbox [(ngModel)]="rememberMe" name="rememberMe" id="remember">
+            </ion-checkbox>
+            <label for="remember" class="remember-label">Remember me</label>
+          </div>
+          <ion-button fill="clear" class="forgot-password-link">
+            Forgot Password?
+          </ion-button>
+        </div>
+
+        <!-- Sign In Button -->
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          class="signin-button"
+          [disabled]="!email || !password">
+          Sign In
+        </ion-button>
+
+        <!-- Divider -->
+        <div class="form-divider">
+          <div class="divider-line"></div>
+          <span class="divider-text">or</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <!-- Continue as Guest -->
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          class="guest-button"
+          (click)="continueAsGuest()">
+          Continue as Guest
+        </ion-button>
+
+        <!-- Sign Up Link -->
+        <p class="signup-prompt">
+          Don't have an account? 
+          <ion-button fill="clear" class="signup-link" (click)="goToSignup()">
+            Sign up
+          </ion-button>
+        </p>
+      </form>
+
+      <!-- Footer -->
+      <p class="footer-text">
+        © 2026 BloodLife Hospital Systems. All rights reserved.
+      </p>
+    </div>
+  </div>
+</ion-content>

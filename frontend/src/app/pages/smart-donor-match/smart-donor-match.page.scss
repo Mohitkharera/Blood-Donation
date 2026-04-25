@@ -1,0 +1,59 @@
+/* ── Smart Donor Match Page ── */
+.smart-donor-match-content { --background: var(--c-ivory); }
+
+.hero-section {
+  background: linear-gradient(135deg, #2980b9 0%, #1a5276 55%, #154360 100%);
+  padding: 4rem 1.5rem 5.5rem; text-align: center; color: white;
+  position: relative; overflow: hidden;
+}
+.hero-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(41,128,185,.25), transparent);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+.hero-icon { font-size: 3rem; color: white; filter: drop-shadow(0 4px 12px rgba(0,0,0,.25)); margin-bottom: .875rem; }
+.hero-section h1 { font-family: var(--f-display); font-size: 2.3rem; font-weight: 800; color: white; margin-bottom: .875rem; }
+.hero-section p { font-size: 1rem; opacity: .88; }
+
+.match-content { padding: 1rem 1.5rem 5rem; position: relative; z-index: 5; }
+.search-card {
+  background: white; border-radius: var(--r-xl); padding: 2rem;
+  box-shadow: var(--sh-xl); margin: -3.5rem 0 2rem;
+  border: 1px solid var(--c-border);
+}
+.search-card h2 { font-family: var(--f-display); font-size: 1.3rem; font-weight: 700; color: var(--c-ink); margin-bottom: 1.25rem; }
+.search-field { margin-bottom: 1rem; }
+.search-field ion-item {
+  --background: var(--c-ivory); --border-radius: var(--r-md);
+  --border-color: var(--c-border); --border-width: 1.5px; --border-style: solid;
+  border-radius: var(--r-md);
+}
+.search-btn {
+  --background: var(--g-cool); --border-radius: var(--r-lg);
+  --padding-top: .875rem; --padding-bottom: .875rem;
+  font-family: var(--f-body); font-weight: 700; text-transform: none;
+}
+
+.results-section { }
+.results-section h3 { font-family: var(--f-display); font-size: 1.3rem; font-weight: 700; color: var(--c-ink); margin-bottom: 1rem; }
+.donor-result-card {
+  background: white; border-radius: var(--r-xl); padding: 1.25rem;
+  border: 1px solid var(--c-border); box-shadow: var(--sh-xs);
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
+  transition: all .25s ease;
+}
+.donor-result-card:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); border-color: transparent; }
+.donor-avatar {
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-display); font-size: 1.1rem; font-weight: 800; color: white;
+}
+.donor-info { flex: 1; }
+.donor-name { font-weight: 700; font-size: .9rem; color: var(--c-ink); margin-bottom: .2rem; }
+.donor-details { font-size: .78rem; color: var(--c-muted); }
+.blood-tag {
+  padding: .25rem .65rem; border-radius: var(--r-sm);
+  font-size: .78rem; font-weight: 800;
+  background: var(--c-red-ghost); color: var(--c-red); border: 1px solid var(--c-border-warm);
+}

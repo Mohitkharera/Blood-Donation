@@ -1,0 +1,168 @@
+<ion-content [fullscreen]="true" class="get-started-content">
+  <!-- Modern Hero Section -->
+  <section class="hero-section" style="background: var(--gradient-hero)">
+    <!-- Decorative elements -->
+    <div class="hero-decoration">
+      <div class="decoration-circle decoration-circle-1"></div>
+      <div class="decoration-circle decoration-circle-2"></div>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-grid">
+        <!-- Left content -->
+        <div class="hero-content fade-up">
+          <!-- Status badge -->
+          <div class="hero-badge">
+            <div class="badge-indicator">
+              <span class="indicator-dot"></span>
+              <span class="indicator-ring"></span>
+            </div>
+            <span class="badge-text">Blood Donation Made Easy</span>
+          </div>
+
+          <h1 class="hero-title">
+            Join
+            <br />
+            <span class="text-gradient-primary">The Cause</span>
+          </h1>
+
+          <p class="hero-description">
+            Welcome to the Blood Donation Management System, where your
+            <strong class="text-accent">contribution saves lives</strong>. With every drop of blood
+            donated, you are making a significant impact on the lives of patients in need.
+            Join us in this noble cause and help us create a healthier community through the power of blood donation.
+          </p>
+
+          <div class="hero-actions">
+            <ion-button size="large" class="cta-button" (click)="getStarted()">
+              <ion-icon name="arrow-forward" slot="end"></ion-icon>
+              Get Started
+            </ion-button>
+          </div>
+
+          <!-- Stats -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">10K+</div>
+              <div class="stat-label">Donors</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">25K+</div>
+              <div class="stat-label">Lives Saved</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">Centers</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right image -->
+        <div class="hero-image-container fade-in" style="animation-delay: 0.3s">
+          <div class="hero-image-card">
+            <img src="assets/hero-donation.jpg" alt="Blood donation in progress" class="hero-image" />
+            <div class="hero-image-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Features Section -->
+  <section class="features-section">
+    <div class="section-header">
+      <h2 class="section-title">Why Donate Blood?</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card fade-up" style="animation-delay: 0.1s">
+        <div class="feature-image-container">
+          <img src="assets/blood-bag.jpg" alt="Save Lives" class="feature-image" />
+          <div class="feature-icon">
+            <ion-icon name="heart"></ion-icon>
+          </div>
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Save Lives</h3>
+          <p class="feature-description">Every donation can save up to 3 lives</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-up" style="animation-delay: 0.2s">
+        <div class="feature-image-container">
+          <img src="assets/community.jpg" alt="Help Community" class="feature-image" />
+          <div class="feature-icon">
+            <ion-icon name="people"></ion-icon>
+          </div>
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Help Community</h3>
+          <p class="feature-description">Support your local healthcare system</p>
+        </div>
+      </div>
+
+      <div class="feature-card fade-up" style="animation-delay: 0.3s">
+        <div class="feature-image-container">
+          <img src="assets/safe-process.jpg" alt="Safe Process" class="feature-image" />
+          <div class="feature-icon">
+            <ion-icon name="shield-checkmark"></ion-icon>
+          </div>
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Safe Process</h3>
+          <p class="feature-description">Sterile equipment and trained staff</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Impact Section -->
+  <section class="impact-section">
+    <div class="section-header">
+      <h2 class="section-title">Blood Donation Impact</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-card fade-up" style="animation-delay: 0.1s">
+        <div class="impact-image-container">
+          <img src="assets/community.jpg" alt="Healthcare Facilities" class="impact-image" />
+        </div>
+        <div class="impact-content">
+          <div class="impact-icon">
+            <ion-icon name="business"></ion-icon>
+          </div>
+          <h3 class="impact-title">Healthcare Facilities</h3>
+          <p class="impact-description">Supporting hospitals and clinics</p>
+        </div>
+      </div>
+
+      <div class="impact-card fade-up" style="animation-delay: 0.2s">
+        <div class="impact-image-container">
+          <img src="assets/emergency.jpg" alt="Emergency Response" class="impact-image" />
+        </div>
+        <div class="impact-content">
+          <div class="impact-icon">
+            <ion-icon name="medkit"></ion-icon>
+          </div>
+          <h3 class="impact-title">Emergency Response</h3>
+          <p class="impact-description">Critical for trauma care</p>
+        </div>
+      </div>
+
+      <div class="impact-card fade-up" style="animation-delay: 0.3s">
+        <div class="impact-image-container">
+          <img src="assets/volunteer.jpg" alt="Volunteer Network" class="impact-image" />
+        </div>
+        <div class="impact-content">
+          <div class="impact-icon">
+            <ion-icon name="people"></ion-icon>
+          </div>
+          <h3 class="impact-title">Volunteer Network</h3>
+          <p class="impact-description">Community of lifesavers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ion-content>

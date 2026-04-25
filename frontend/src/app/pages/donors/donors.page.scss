@@ -1,0 +1,105 @@
+/* ── Donors Page ── */
+.hospital-list-content { --background: var(--c-ivory); }
+
+.hero-section {
+  background: var(--g-hero);
+  padding: 4rem 1.5rem 5.5rem;
+  text-align: center; color: white;
+  position: relative; overflow: hidden;
+}
+.hero-section::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(231,76,60,.2), transparent);
+  pointer-events: none;
+}
+.hero-content { max-width: 640px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-section h1 { font-family: var(--f-display); font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: .625rem; }
+.hero-section p { font-size: 1rem; opacity: .85; margin-bottom: 1rem; }
+
+.add-plasma-btn {
+  --background: var(--g-amber);
+  --color: white; --border-radius: var(--r-lg);
+  --padding-start: 1.5rem; --padding-end: 1.5rem;
+  --padding-top: .75rem; --padding-bottom: .75rem;
+  font-family: var(--f-body); font-weight: 700; text-transform: none;
+  --box-shadow: 0 8px 24px rgba(243,156,18,.35);
+}
+
+/* Search */
+.search-wrapper {
+  display: flex; justify-content: center;
+  margin-top: -1.75rem; margin-bottom: 2rem;
+  padding: 0 1.5rem; position: relative; z-index: 10;
+}
+ion-searchbar {
+  max-width: 520px; width: 100%;
+  --border-radius: var(--r-lg);
+  --box-shadow: var(--sh-lg);
+  --background: white;
+  --color: var(--c-ink);
+  --placeholder-color: var(--c-muted-2);
+  --icon-color: var(--c-muted);
+}
+
+/* Grid */
+.hospital-section { padding: 1rem 1.5rem 5rem; }
+.hospital-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.25rem; max-width: 90rem; margin: 0 auto;
+}
+
+/* Donor cards */
+.hospital-card {
+  border-radius: var(--r-xl) !important;
+  box-shadow: var(--sh-sm) !important;
+  border: 1px solid var(--c-border);
+  background: white !important;
+  transition: all .25s ease;
+  overflow: hidden;
+  --background: white;
+}
+.hospital-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg) !important; border-color: transparent; }
+
+ion-card.hospital-card ion-card-header {
+  padding: 1.25rem 1.25rem .75rem;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-ivory);
+}
+ion-card.hospital-card ion-card-header ion-card-title {
+  font-family: var(--f-display) !important;
+  font-size: 1.1rem !important; font-weight: 700 !important;
+  color: var(--c-ink) !important;
+  margin-bottom: .25rem;
+}
+ion-card.hospital-card ion-card-header ion-card-subtitle {
+  font-size: .8rem !important; color: var(--c-muted) !important;
+}
+
+ion-card.hospital-card ion-card-content { padding: 1.25rem; }
+
+/* Info row inside cards */
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem; flex-wrap: wrap; gap: .5rem;
+}
+.info-row > div { display: flex; align-items: center; gap: .4rem; }
+.label { font-size: .75rem; color: var(--c-muted); font-weight: 500; }
+.value { font-weight: 700; font-size: .875rem; color: var(--c-ink); }
+
+.donor-type {
+  padding: .2rem .6rem; border-radius: var(--r-full);
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+}
+.donor-type.blood { background: var(--c-blue-ghost); color: var(--c-blue); }
+.donor-type.plasma { background: var(--c-amber-ghost); color: var(--c-amber); }
+
+.status { font-size: .8rem; font-weight: 700; }
+.available { color: var(--c-emerald); }
+.not-available { color: var(--c-red); }
+
+.donor-actions { display: flex; align-items: center; gap: .75rem; margin-top: .75rem; }
+
+ion-button { --border-radius: var(--r-md); font-family: var(--f-body); font-weight: 600; text-transform: none; }
+
+@media (max-width: 768px) { .hospital-grid { grid-template-columns: 1fr; } }

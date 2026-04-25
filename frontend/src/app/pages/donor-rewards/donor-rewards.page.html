@@ -1,0 +1,54 @@
+<ion-content class="hospital-list-content">
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Donor Rewards</h1>
+      <p>View donor achievements</p>
+    </div>
+  </div>
+
+  <div class="hospital-section">
+    <div class="hospital-grid">
+
+      <ion-card class="hospital-card" *ngFor="let donor of donors">
+
+        <ion-card-header>
+          <ion-card-title>{{ donor.name }}</ion-card-title>
+          <ion-card-subtitle>{{ donor.city }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="info-row">
+            <div>
+              <span class="label">Blood:</span>
+              <span class="value">{{ donor.bloodGroup }}</span>
+            </div>
+            <div>
+              <span class="label">Phone:</span>
+              <span class="value">{{ donor.phone }}</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div>
+              <span class="label">Points:</span>
+              <span class="value">{{ donor.points }}</span>
+            </div>
+            <div>
+              <span class="label">Level:</span>
+              <span class="value">{{ donor.level }}</span>
+            </div>
+          </div>
+
+          <div class="donor-actions">
+            <ion-button size="small">Contact Donor</ion-button>
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+
+    </div>
+  </div>
+
+</ion-content>
+

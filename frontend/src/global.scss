@@ -1,0 +1,152 @@
+/*
+ * BloodLife – Enhanced Design System
+ */
+
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
+
+:root {
+  --c-red:           #c0392b;
+  --c-red-dark:      #922b21;
+  --c-red-light:     #e74c3c;
+  --c-red-ghost:     rgba(192,57,43,.08);
+  --c-red-glow:      rgba(192,57,43,.22);
+  --c-orange:        #e67e22;
+  --c-orange-ghost:  rgba(230,126,34,.10);
+  --c-emerald:       #27ae60;
+  --c-emerald-ghost: rgba(39,174,96,.10);
+  --c-amber:         #f39c12;
+  --c-amber-ghost:   rgba(243,156,18,.10);
+  --c-blue:          #2980b9;
+  --c-blue-ghost:    rgba(41,128,185,.10);
+  --c-ivory:         #fdf6f0;
+  --c-surface:       #ffffff;
+  --c-surface-2:     #fdf4f0;
+  --c-border:        rgba(0,0,0,.08);
+  --c-border-warm:   rgba(192,57,43,.12);
+  --c-ink:           #1a1210;
+  --c-ink-2:         #3d2b27;
+  --c-muted:         #7c6b67;
+  --c-muted-2:       #a89590;
+  --g-hero:          linear-gradient(135deg,#c0392b 0%,#922b21 55%,#7b241c 100%);
+  --g-card:          linear-gradient(145deg,#fff 0%,#fdf4f0 100%);
+  --g-accent:        linear-gradient(135deg,#e74c3c 0%,#c0392b 100%);
+  --g-cool:          linear-gradient(135deg,#2980b9 0%,#1a5276 100%);
+  --g-emerald:       linear-gradient(135deg,#27ae60 0%,#1e8449 100%);
+  --g-amber:         linear-gradient(135deg,#f39c12 0%,#d68910 100%);
+  --g-purple:        linear-gradient(135deg,#8e44ad 0%,#6c3483 100%);
+  --g-teal:          linear-gradient(135deg,#16a085 0%,#1a7a63 100%);
+  --f-display:       'Playfair Display', Georgia, serif;
+  --f-body:          'DM Sans', -apple-system, sans-serif;
+  --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem;
+  --sp-5: 1.25rem; --sp-6: 1.5rem; --sp-8: 2rem; --sp-10: 2.5rem;
+  --sp-12: 3rem; --sp-16: 4rem; --sp-20: 5rem;
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 22px; --r-2xl: 30px; --r-full: 9999px;
+  --sh-xs:  0 1px 3px rgba(0,0,0,.06);
+  --sh-sm:  0 2px 8px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
+  --sh-md:  0 6px 20px rgba(0,0,0,.09), 0 2px 6px rgba(0,0,0,.06);
+  --sh-lg:  0 12px 35px rgba(0,0,0,.11), 0 4px 10px rgba(0,0,0,.07);
+  --sh-xl:  0 20px 50px rgba(0,0,0,.14), 0 8px 20px rgba(0,0,0,.08);
+  --sh-red: 0 8px 28px rgba(192,57,43,.30), 0 2px 8px rgba(192,57,43,.15);
+  --sh-red-lg: 0 16px 48px rgba(192,57,43,.35);
+
+  /* Ionic */
+  --ion-color-primary: #c0392b;
+  --ion-color-primary-rgb: 192,57,43;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #a93226;
+  --ion-color-primary-tint: #e74c3c;
+  --ion-color-success: #27ae60;
+  --ion-color-warning: #f39c12;
+  --ion-color-danger: #c0392b;
+  --ion-color-medium: #7c6b67;
+  --ion-background-color: var(--c-ivory);
+  --ion-background-color-rgb: 253,246,240;
+  --ion-text-color: var(--c-ink);
+  --ion-card-background: var(--c-surface);
+  --ion-font-family: var(--f-body);
+
+  /* Legacy compat */
+  --font-family-heading: var(--f-display);
+  --font-family-body: var(--f-body);
+  --gradient-primary: var(--g-accent);
+  --gradient-hero: var(--g-hero);
+  --border-radius-2xl: var(--r-2xl);
+  --shadow-xl: var(--sh-xl);
+  --spacing-lg: var(--sp-6);
+  --spacing-sm: var(--sp-2);
+  --spacing-xs: var(--sp-1);
+  --spacing-2xl: var(--sp-12);
+  --spacing-3xl: var(--sp-16);
+  --font-size-2xl: 1.5rem;
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--f-body);
+  background: var(--c-ivory);
+  color: var(--c-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,h5,h6 { font-family: var(--f-display); font-weight: 700; line-height: 1.2; margin: 0; }
+p { margin: 0; }
+
+/* Tab Bar */
+.tab-bar {
+  --background: rgba(255,252,250,.97);
+  --border: none;
+  --color: var(--c-muted);
+  --color-selected: var(--c-red);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--c-border-warm);
+  box-shadow: 0 -4px 24px rgba(0,0,0,.07);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab-bar ion-tab-button { --color: var(--c-muted-2); --color-selected: var(--c-red); }
+.tab-bar ion-tab-button ion-icon { font-size: 1.35rem; transition: all .25s ease; }
+.tab-bar ion-tab-button[aria-selected="true"] ion-icon { transform: translateY(-2px); filter: drop-shadow(0 2px 6px var(--c-red-glow)); }
+.tab-bar ion-tab-button ion-label { font-size: .7rem; font-weight: 600; letter-spacing: .02em; }
+.tabs-hidden, ion-tab-bar[hidden], .tab-bar.hidden { display: none !important; height: 0 !important; overflow: hidden !important; pointer-events: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--c-border-warm); border-radius: 99px; }
+
+/* Utility */
+.text-gradient-primary {
+  background: var(--g-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.fade-in  { animation: bl-fadeIn .5s cubic-bezier(.4,0,.2,1) both; }
+.fade-up  { animation: bl-fadeUp .6s ease-out forwards; }
+@keyframes bl-fadeIn  { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes bl-fadeUp  { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+
+/* Section helpers */
+.bl-section-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--c-red-ghost); border: 1px solid var(--c-border-warm);
+  border-radius: var(--r-full); padding: .25rem 1rem;
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--c-red); margin-bottom: 1rem;
+}
+.bl-section-title { font-family: var(--f-display); font-size: 1.9rem; font-weight: 700; color: var(--c-ink); margin-bottom: .5rem; }
+.bl-section-subtitle { font-size: .9rem; color: var(--c-muted); line-height: 1.6; }
+
+/* Ionic overrides */
+ion-input, ion-textarea, ion-select {
+  --background: var(--c-surface);
+  --color: var(--c-ink);
+  --placeholder-color: var(--c-muted-2);
+}
+ion-item { --background: transparent; --border-color: var(--c-border); --color: var(--c-ink); }
+
+@import '@ionic/angular/css/palettes/dark.system.css';

@@ -1,0 +1,372 @@
+<ion-content [fullscreen]="true" class="plasma-home-content">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <!-- Mesh gradient overlays -->
+    <div class="mesh-overlay-1"></div>
+    <div class="mesh-overlay-2"></div>
+
+    <!-- Grid pattern -->
+    <div class="grid-pattern"></div>
+
+    <!-- Floating elements -->
+    <div class="floating-heart-1">
+      <ion-icon name="flask"></ion-icon>
+    </div>
+    <div class="floating-droplets-1">
+      <ion-icon name="water"></ion-icon>
+    </div>
+    <div class="floating-droplets-2">
+      <ion-icon name="water"></ion-icon>
+    </div>
+    <div class="floating-heart-2">
+      <ion-icon name="flask"></ion-icon>
+    </div>
+    <div class="floating-heart-3">
+      <ion-icon name="flask"></ion-icon>
+    </div>
+
+    <!-- Glow circles -->
+    <div class="glow-circle-1"></div>
+    <div class="glow-circle-2"></div>
+
+    <div class="hero-container">
+      <!-- Badge -->
+      <div class="hero-badge">
+        <div class="badge-icon">
+          <ion-icon name="pulse"></ion-icon>
+        </div>
+        <span class="badge-text">Plasma Bank Management System</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title">
+        Welcome to
+        <br />
+        <span class="hero-title-highlight">
+          <span class="title-gradient">Plasma Donation</span>
+          <span class="title-underline"></span>
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        Manage and track plasma donation activities across partner centers with real-time inventory monitoring and smart donor matching
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-actions">
+        <button class="primary-cta" (click)="addDonor()">
+          <ion-icon name="flask" class="cta-icon"></ion-icon>
+          Donate Plasma Now
+          <ion-icon name="arrow-forward" class="cta-arrow"></ion-icon>
+        </button>
+        <button class="secondary-cta" (click)="viewHospitals()">
+          <ion-icon name="flask" class="cta-icon"></ion-icon>
+          Find Plasma Center
+        </button>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <ion-icon name="shield-checkmark" class="trust-icon"></ion-icon>
+          <span class="trust-text">FDA Compliant</span>
+        </div>
+        <div class="trust-badge">
+          <ion-icon name="time" class="trust-icon"></ion-icon>
+          <span class="trust-text">24/7 Available</span>
+        </div>
+        <div class="trust-badge">
+          <ion-icon name="pulse" class="trust-icon"></ion-icon>
+          <span class="trust-text">Real-time Tracking</span>
+        </div>
+        <div class="trust-badge">
+          <ion-icon name="flask" class="trust-icon"></ion-icon>
+          <span class="trust-text">1000+ Lives Saved</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card stat-1">
+        <div class="stat-accent-line"></div>
+        <div class="stat-content">
+          <div class="stat-header">
+            <div class="stat-icon-wrapper">
+              <ion-icon name="people" class="stat-icon"></ion-icon>
+            </div>
+            <div class="stat-trend">
+              <ion-icon name="trending-up" class="trend-icon"></ion-icon>
+              <span class="trend-text positive">+12%</span>
+            </div>
+          </div>
+          <p class="stat-value">{{ totalDonors }}</p>
+          <div class="stat-footer">
+            <span class="stat-label">Total Donors</span>
+            <ion-icon name="arrow-forward" class="stat-arrow"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card stat-2">
+        <div class="stat-accent-line"></div>
+        <div class="stat-content">
+          <div class="stat-header">
+            <div class="stat-icon-wrapper">
+              <ion-icon name="flask" class="stat-icon"></ion-icon>
+            </div>
+            <div class="stat-trend">
+              <ion-icon name="trending-up" class="trend-icon"></ion-icon>
+              <span class="trend-text positive">+8%</span>
+            </div>
+          </div>
+          <p class="stat-value">{{ totalPlasmaDonations }}</p>
+          <div class="stat-footer">
+            <span class="stat-label">Total Plasma Donations</span>
+            <ion-icon name="arrow-forward" class="stat-arrow"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card stat-3">
+        <div class="stat-accent-line"></div>
+        <div class="stat-content">
+          <div class="stat-header">
+            <div class="stat-icon-wrapper">
+              <ion-icon name="heart-handshake" class="stat-icon"></ion-icon>
+            </div>
+            <div class="stat-trend">
+              <ion-icon name="trending-up" class="trend-icon"></ion-icon>
+              <span class="trend-text positive">+23%</span>
+            </div>
+          </div>
+          <p class="stat-value">{{ livesSaved }}</p>
+          <div class="stat-footer">
+            <span class="stat-label">Lives Saved</span>
+            <ion-icon name="arrow-forward" class="stat-arrow"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card stat-4">
+        <div class="stat-accent-line"></div>
+        <div class="stat-content">
+          <div class="stat-header">
+            <div class="stat-icon-wrapper">
+              <ion-icon name="calendar" class="stat-icon"></ion-icon>
+            </div>
+            <div class="stat-trend">
+              <ion-icon name="trending-down" class="trend-icon"></ion-icon>
+              <span class="trend-text negative">-3%</span>
+            </div>
+          </div>
+          <p class="stat-value">{{ thisMonth }}</p>
+          <div class="stat-footer">
+            <span class="stat-label">This Month</span>
+            <ion-icon name="arrow-forward" class="stat-arrow"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions Section -->
+  <section class="actions-section">
+    <div class="section-header">
+      <div class="quick-access-badge">
+        <div class="pulse-dot"></div>
+        <span class="badge-text">Quick Access</span>
+      </div>
+      <h2 class="section-title">Quick Actions</h2>
+      <p class="section-subtitle">Access key features of your plasma bank management system</p>
+    </div>
+
+    <div class="actions-grid">
+      <div class="action-card action-1" (click)="viewHospitals()">
+        <div class="action-icon-wrapper">
+          <ion-icon name="business" class="action-icon"></ion-icon>
+        </div>
+        <h3 class="action-title">Partner Centers</h3>
+        <p class="action-description">Find plasma centers in our network</p>
+        <ion-icon name="arrow-forward" class="action-arrow"></ion-icon>
+      </div>
+
+      <div class="action-card action-2" (click)="viewDonors()">
+        <div class="action-icon-wrapper">
+          <ion-icon name="people" class="action-icon"></ion-icon>
+        </div>
+        <h3 class="action-title">View Plasma Donors</h3>
+        <p class="action-description">Browse and search plasma donors</p>
+        <ion-icon name="arrow-forward" class="action-arrow"></ion-icon>
+      </div>
+
+      <div class="action-card action-4" (click)="openSmartDonorMatch()">
+        <div class="action-icon-wrapper">
+          <ion-icon name="search" class="action-icon"></ion-icon>
+        </div>
+        <h3 class="action-title">Smart Match</h3>
+        <p class="action-description">AI-powered donor matching</p>
+        <ion-icon name="arrow-forward" class="action-arrow"></ion-icon>
+      </div>
+
+      <div class="action-card action-5" (click)="viewRewards()">
+        <div class="action-icon-wrapper">
+          <ion-icon name="trophy" class="action-icon"></ion-icon>
+        </div>
+        <h3 class="action-title">Rewards</h3>
+        <p class="action-description">Donor achievements</p>
+        <ion-icon name="arrow-forward" class="action-arrow"></ion-icon>
+      </div>
+
+      <div class="action-card action-6" (click)="openPlasmaDonation()">
+        <div class="action-icon-wrapper">
+          <ion-icon name="flask" class="action-icon"></ion-icon>
+        </div>
+        <h3 class="action-title">Plasma Donation</h3>
+        <p class="action-description">Donate plasma to save lives</p>
+        <ion-icon name="arrow-forward" class="action-arrow"></ion-icon>
+      </div>
+
+      <div class="action-card action-7">
+        <div class="action-icon-wrapper">
+          <ion-icon name="analytics" class="action-icon"></ion-icon>
+        </div>
+        <h3 class="action-title">Reports</h3>
+        <p class="action-description">View statistics</p>
+        <ion-icon name="arrow-forward" class="action-arrow"></ion-icon>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plasma Inventory Section -->
+  <section class="inventory-section">
+    <div class="inventory-container">
+      <div class="inventory-header">
+        <div class="inventory-badge">
+          <ion-icon name="flask" class="badge-icon"></ion-icon>
+          <span class="badge-text">Inventory</span>
+        </div>
+        <h2 class="section-title">Plasma Type Distribution</h2>
+        <p class="section-subtitle">Current stock levels across all plasma groups</p>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-dot good"></div>
+            <span>High Stock</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot average"></div>
+            <span>Average</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot low"></div>
+            <span>Low Stock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blood-types-grid">
+      <div class="blood-type-card type-apositive" *ngFor="let bloodType of bloodTypes" (click)="openBloodHospitals(bloodType.type)">
+        <div class="blood-type-header">
+          <span class="blood-type">{{ bloodType.type }}</span>
+          <ion-icon name="flask" class="type-icon"></ion-icon>
+        </div>
+        <div class="blood-type-content">
+          <div class="blood-info">
+            <span class="blood-count">{{ bloodType.count }} Units</span>
+            <span class="blood-percentage">{{ bloodType.percentage }}%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="bloodType.percentage"></div>
+          </div>
+          <div class="status-badge" [class.good]="bloodType.count > 15" [class.average]="bloodType.count > 5 && bloodType.count <= 15" [class.low]="bloodType.count <= 5">
+            <ion-icon name="checkmark-circle" class="status-icon" *ngIf="bloodType.count > 15"></ion-icon>
+            <ion-icon name="alert-circle" class="status-icon" *ngIf="bloodType.count > 5 && bloodType.count <= 15"></ion-icon>
+            <ion-icon name="warning" class="status-icon" *ngIf="bloodType.count <= 5"></ion-icon>
+            <span class="status-text" *ngIf="bloodType.count > 15">High Stock</span>
+            <span class="status-text" *ngIf="bloodType.count > 5 && bloodType.count <= 15">Average Stock</span>
+            <span class="status-text" *ngIf="bloodType.count <= 5">Low Stock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Activity Section -->
+  <section class="activity-section">
+    <div class="activity-container">
+      <div class="activity-header">
+        <div class="live-indicator">
+          <div class="ping-dot"></div>
+          <span class="pulse-ring"></span>
+          <div class="ping-dot"></div>
+          <span class="pulse-ring"></span>
+          <div class="ping-dot"></div>
+          <span class="pulse-ring"></span>
+          <span class="badge-text">Live Feed</span>
+        </div>
+        <h2 class="section-title">Recent Activity</h2>
+        <p class="section-subtitle">Latest updates from plasma bank network</p>
+        <button class="view-all-btn" (click)="viewDonors()">
+          View All
+          <ion-icon name="arrow-forward" class="btn-icon"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="activity-list">
+      <div class="activity-item activity-1">
+        <div class="activity-icon-wrapper">
+          <ion-icon name="flask" class="activity-icon"></ion-icon>
+        </div>
+        <div class="activity-content">
+          <h4 class="activity-title">New plasma donation received from Ayush faujdar</h4>
+          <p class="activity-time">2 min ago</p>
+        </div>
+      </div>
+
+      <div class="activity-item activity-2">
+        <div class="activity-icon-wrapper">
+          <ion-icon name="person-add" class="activity-icon"></ion-icon>
+        </div>
+        <div class="activity-content">
+          <h4 class="activity-title">New plasma donor registered: Utsaah singh</h4>
+          <p class="activity-time">15 min ago</p>
+        </div>
+      </div>
+
+      <div class="activity-item activity-3">
+        <div class="activity-icon-wrapper">
+          <ion-icon name="business" class="activity-icon"></ion-icon>
+        </div>
+        <div class="activity-content">
+          <h4 class="activity-title">City Center requested 5 units of O+ plasma</h4>
+          <p class="activity-time">1 hour ago</p>
+        </div>
+      </div>
+
+      <div class="activity-item activity-4">
+        <div class="activity-icon-wrapper">
+          <ion-icon name="flask" class="activity-icon"></ion-icon>
+        </div>
+        <div class="activity-content">
+          <h4 class="activity-title">Plasma screening completed for batch #2847</h4>
+          <p class="activity-time">2 hours ago</p>
+        </div>
+      </div>
+
+      <div class="activity-item activity-5">
+        <div class="activity-icon-wrapper">
+          <ion-icon name="heart" class="activity-icon"></ion-icon>
+        </div>
+        <div class="activity-content">
+          <h4 class="activity-title">Emergency request fulfilled: 3 units A- plasma</h4>
+          <p class="activity-time">3 hours ago</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ion-content>

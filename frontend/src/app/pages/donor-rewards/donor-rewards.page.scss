@@ -1,0 +1,56 @@
+/* ── Donor Rewards Page ── */
+.donor-rewards-content { --background: var(--c-ivory); }
+
+.hero-section {
+  background: linear-gradient(135deg, #f39c12 0%, #d68910 55%, #b7770d 100%);
+  padding: 4rem 1.5rem 5.5rem; text-align: center; color: white;
+  position: relative; overflow: hidden;
+}
+.hero-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(192,57,43,.12), transparent);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+.hero-icon { font-size: 3rem; color: white; filter: drop-shadow(0 4px 12px rgba(0,0,0,.25)); margin-bottom: .875rem; }
+.hero-section h1 { font-family: var(--f-display); font-size: 2.3rem; font-weight: 800; color: white; margin-bottom: .875rem; }
+.hero-section p { font-size: 1rem; opacity: .88; }
+
+.rewards-content { padding: 1rem 1.5rem 5rem; position: relative; z-index: 5; }
+
+/* Top summary strip */
+.rewards-summary {
+  background: white; border-radius: var(--r-xl); padding: 1.5rem;
+  box-shadow: var(--sh-lg); margin: -3.5rem 0 2rem;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1rem; border: 1px solid var(--c-border);
+}
+.summary-item { text-align: center; }
+.summary-value { font-family: var(--f-display); font-size: 1.8rem; font-weight: 800; color: var(--c-amber); }
+.summary-label { font-size: .75rem; color: var(--c-muted); font-weight: 500; margin-top: .2rem; }
+
+/* Badge grid */
+.badges-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem,1fr)); gap: 1.25rem; max-width: 90rem; margin: 0 auto; }
+.badge-card {
+  background: white; border-radius: var(--r-xl); padding: 1.5rem;
+  border: 1px solid var(--c-border); box-shadow: var(--sh-xs);
+  text-align: center; transition: all .25s ease; cursor: pointer;
+}
+.badge-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: transparent; }
+.badge-icon-wrap {
+  width: 4rem; height: 4rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto .875rem; font-size: 1.75rem;
+}
+.badge-icon-wrap.gold   { background: linear-gradient(135deg,#f39c12,#d68910); color: white; }
+.badge-icon-wrap.silver { background: linear-gradient(135deg,#95a5a6,#7f8c8d); color: white; }
+.badge-icon-wrap.bronze { background: linear-gradient(135deg,#e67e22,#ca6f1e); color: white; }
+.badge-icon-wrap.locked { background: var(--c-border); color: var(--c-muted-2); }
+.badge-name { font-family: var(--f-display); font-size: 1rem; font-weight: 700; color: var(--c-ink); margin-bottom: .3rem; }
+.badge-desc { font-size: .78rem; color: var(--c-muted); line-height: 1.5; }
+.badge-card.locked-card { opacity: .6; }
+
+@media (max-width: 480px) {
+  .rewards-summary { grid-template-columns: 1fr; }
+  .badges-grid { grid-template-columns: 1fr 1fr; }
+}

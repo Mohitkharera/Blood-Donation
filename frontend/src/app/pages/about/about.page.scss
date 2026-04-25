@@ -1,0 +1,39 @@
+/* ── About Page ── */
+.about-content { --background: var(--c-ivory); }
+
+.hero-section {
+  background: var(--g-hero);
+  padding: 4rem 1.5rem 5.5rem; text-align: center; color: white;
+  position: relative; overflow: hidden;
+}
+.hero-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 80% 20%, rgba(192,57,43,.18), transparent);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.hero-icon { font-size: 3rem; color: rgba(255,255,255,.9); filter: drop-shadow(0 4px 12px rgba(0,0,0,.25)); margin-bottom: .875rem; }
+.hero-section h1 { font-family: var(--f-display); font-size: 2.4rem; font-weight: 800; color: white; margin-bottom: .875rem; }
+.hero-section p { font-size: 1rem; opacity: .88; }
+
+.about-body { padding: 1.5rem; margin-top: -3.5rem; position: relative; z-index: 5; }
+.about-card {
+  background: white; border-radius: var(--r-xl); padding: 2rem;
+  border: 1px solid var(--c-border); box-shadow: var(--sh-lg);
+  margin-bottom: 1.25rem;
+}
+.about-card h2 { font-family: var(--f-display); font-size: 1.4rem; font-weight: 800; color: var(--c-ink); margin-bottom: .875rem; display: flex; align-items: center; gap: .6rem; }
+.about-card h2 ion-icon { color: var(--c-red); font-size: 1.3rem; }
+.about-card p, .about-card li { font-size: .9rem; color: var(--c-muted); line-height: 1.65; margin-bottom: .6rem; }
+.about-card ul { padding-left: 1.25rem; }
+.about-card li { color: var(--c-muted); }
+
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem,1fr)); gap: 1rem; }
+.team-member { text-align: center; padding: 1.25rem; background: var(--c-ivory); border-radius: var(--r-lg); }
+.team-avatar {
+  width: 3.5rem; height: 3.5rem; border-radius: 50%; margin: 0 auto .75rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-display); font-size: 1.2rem; font-weight: 800; color: white;
+}
+.team-name { font-weight: 700; font-size: .875rem; color: var(--c-ink); margin-bottom: .2rem; }
+.team-role { font-size: .75rem; color: var(--c-muted); }

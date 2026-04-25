@@ -1,0 +1,103 @@
+/* ── Profile Page ── */
+.profile-content { --background: var(--c-ivory); }
+
+/* Header */
+.profile-header {
+  background: linear-gradient(135deg, #1a1210 0%, #3d2b27 55%, #5d3d37 100%);
+  padding: 2.5rem 1.5rem 4rem;
+  text-align: center; color: white; position: relative; overflow: hidden;
+}
+.profile-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 80% 20%, rgba(192,57,43,.2), transparent);
+  pointer-events: none;
+}
+.profile-avatar { position: relative; display: inline-block; margin-bottom: 1rem; z-index: 2; }
+.profile-avatar ion-avatar {
+  width: 96px; height: 96px;
+  border: 3px solid rgba(255,255,255,.25);
+  box-shadow: 0 8px 30px rgba(0,0,0,.4);
+}
+.edit-avatar-btn {
+  position: absolute; bottom: 0; right: 0;
+  --background: var(--c-red); --color: white; --border-radius: 50%;
+  width: 32px; height: 32px; --padding-start: 0; --padding-end: 0;
+  box-shadow: 0 4px 14px rgba(192,57,43,.45);
+  --box-shadow: 0 4px 14px rgba(192,57,43,.45);
+}
+.profile-info { position: relative; z-index: 2; }
+.profile-info h1 { font-family: var(--f-display); font-size: 1.7rem; font-weight: 800; color: white; margin-bottom: .35rem; text-shadow: 0 2px 6px rgba(0,0,0,.3); }
+.user-role { font-size: .9rem; opacity: .8; margin-bottom: .875rem; }
+.blood-group-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,255,255,.12); padding: .45rem 1rem;
+  border-radius: var(--r-full); font-weight: 700; font-size: .9rem;
+  backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.2);
+}
+.blood-icon { color: #e74c3c; font-size: 1.1rem; }
+
+/* Stats strip */
+.quick-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+  padding: 1.25rem; background: white;
+  margin: -2rem 1.25rem 1.5rem; border-radius: var(--r-xl);
+  box-shadow: var(--sh-lg); position: relative; z-index: 5;
+  border: 1px solid var(--c-border);
+}
+.stat-item { text-align: center; padding: .75rem .5rem; }
+.stat-item h3 { font-family: var(--f-display); font-size: 1.6rem; font-weight: 800; color: var(--c-red); margin-bottom: .2rem; }
+.stat-item p { font-size: .75rem; color: var(--c-muted); font-weight: 500; }
+
+/* Sections */
+.profile-sections { padding: 0 1.25rem 2rem; }
+.profile-card {
+  margin-bottom: 1.25rem; border-radius: var(--r-xl) !important;
+  box-shadow: var(--sh-sm) !important; border: 1px solid var(--c-border);
+  overflow: hidden; --background: white;
+}
+.profile-card ion-card-header {
+  background: var(--c-ivory); padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--c-border);
+}
+.profile-card ion-card-title {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: var(--f-display) !important; font-size: 1.05rem !important;
+  font-weight: 700 !important; color: var(--c-ink) !important;
+}
+.section-icon { color: var(--c-red); font-size: 1.1rem; }
+.profile-card ion-card-content { padding: 1.25rem 1.5rem; }
+
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .75rem 0; border-bottom: 1px solid var(--c-border); gap: 1rem;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row .label { font-size: .85rem; font-weight: 500; color: var(--c-muted); }
+.info-row .value { font-size: .875rem; font-weight: 700; color: var(--c-ink); text-align: right; }
+.blood-group { color: var(--c-red); font-weight: 800; }
+
+.donation-item {
+  display: flex; gap: 1rem; align-items: center;
+  padding: .875rem 0; border-bottom: 1px solid var(--c-border);
+  flex-wrap: wrap;
+}
+.donation-item:last-child { border-bottom: none; }
+.donation-date, .donation-location, .donation-amount {
+  display: flex; align-items: center; gap: .4rem; font-size: .85rem; color: var(--c-muted-2);
+}
+.date-icon, .location-icon, .amount-icon { color: var(--c-red); font-size: .95rem; }
+
+/* Logout */
+.logout-section { padding: 1rem 1.25rem 2rem; }
+.logout-button {
+  --border-color: var(--c-red); --color: var(--c-red);
+  --border-radius: var(--r-full); --border-width: 1.5px;
+  --padding-top: .875rem; --padding-bottom: .875rem;
+  font-family: var(--f-body); font-weight: 700; text-transform: none;
+  transition: all .25s ease;
+}
+
+@media (max-width: 480px) {
+  .quick-stats { grid-template-columns: 1fr; gap: .5rem; margin: -1.5rem .75rem 1.25rem; }
+  .profile-sections { padding: 0 .75rem 2rem; }
+}

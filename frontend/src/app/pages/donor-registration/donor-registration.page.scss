@@ -1,0 +1,92 @@
+/* ── Donor Registration Page ── */
+.donor-registration-content { --background: var(--c-ivory); padding-bottom: 4rem; }
+
+.hero-section {
+  background: linear-gradient(135deg, #27ae60 0%, #1e8449 55%, #196f3d 100%);
+  padding: 3.5rem 1.5rem 5rem; text-align: center; color: white;
+  position: relative; overflow: hidden;
+  box-shadow: 0 10px 35px rgba(39,174,96,.28);
+}
+.hero-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 80% 20%, rgba(192,57,43,.12), transparent);
+  pointer-events: none;
+}
+.hero-header {
+  position: absolute; top: 1.25rem; left: 1.25rem; z-index: 5;
+}
+.hero-content { max-width: 640px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-icon { font-size: 3rem; color: rgba(255,255,255,.9); margin-bottom: .875rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,.25)); }
+.hero-section h1 { font-family: var(--f-display); font-size: 2.3rem; font-weight: 800; color: white; margin-bottom: .875rem; }
+.hero-section p { font-size: 1rem; opacity: .88; max-width: 420px; margin: 0 auto; }
+
+/* Form */
+.form-wrapper {
+  position: relative; margin: -3rem 1.25rem 0;
+  z-index: 10; padding-bottom: 2rem;
+}
+.form-card {
+  border-radius: var(--r-2xl) !important;
+  box-shadow: var(--sh-xl) !important;
+  border: 1px solid var(--c-border) !important;
+  --background: white; overflow: hidden;
+}
+.form-card ion-card-header {
+  background: white !important; padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--c-border);
+}
+.card-header-content {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1.25rem; flex-wrap: wrap;
+}
+.header-text { flex: 1; min-width: 200px; }
+.form-card ion-card-title {
+  font-family: var(--f-display) !important; font-size: 1.5rem !important;
+  font-weight: 800 !important; color: var(--c-ink) !important; margin-bottom: .375rem;
+}
+.form-card ion-card-subtitle { font-size: .875rem !important; color: var(--c-muted) !important; }
+.status-chip {
+  --color: var(--c-emerald); --border-color: rgba(39,174,96,.25);
+  font-family: var(--f-body); font-size: .75rem; font-weight: 600;
+}
+.form-card ion-card-content { padding: 1.75rem 2rem; }
+
+/* Grid for inputs */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+.input-item {
+  --background: var(--c-ivory);
+  --border-color: var(--c-border);
+  --border-radius: var(--r-md);
+  --border-width: 1.5px;
+  --border-style: solid;
+  --highlight-color: var(--c-emerald);
+  --padding-start: .875rem; --inner-padding-end: .875rem;
+  border-radius: var(--r-md);
+  transition: border-color .2s, box-shadow .2s;
+}
+.input-item.item-has-focus {
+  --border-color: var(--c-emerald);
+  box-shadow: 0 0 0 3px var(--c-emerald-ghost);
+}
+
+/* Submit */
+.submit-section { margin-top: 1.5rem; }
+.submit-btn {
+  --background: var(--g-emerald); --border-radius: var(--r-lg);
+  --padding-top: 1rem; --padding-bottom: 1rem;
+  --box-shadow: 0 8px 28px rgba(39,174,96,.35);
+  font-family: var(--f-body); font-weight: 700; font-size: .9rem; text-transform: none;
+}
+
+@media (max-width: 640px) {
+  .form-wrapper { margin: -2.5rem .75rem 0; }
+  .form-card ion-card-header { padding: 1.5rem; }
+  .form-card ion-card-content { padding: 1.25rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .hero-section { padding: 3rem 1rem 4.5rem; }
+  .hero-section h1 { font-size: 1.9rem; }
+}

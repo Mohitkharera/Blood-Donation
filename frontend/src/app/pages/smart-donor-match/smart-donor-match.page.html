@@ -1,0 +1,81 @@
+<ion-content class="hospital-list-content">
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <ion-icon name="search" class="hero-icon"></ion-icon>
+      <h1>Smart Donor Match</h1>
+      <p>Find the best available donors based on blood group and city.</p>
+    </div>
+  </div>
+
+  <div class="hospital-section">
+
+    <header>
+      <h2>Search Donors</h2>
+      <p>Choose blood group and city to find the most suitable donors.</p>
+    </header>
+
+    <div class="search-form-grid">
+      <ion-item lines="none" class="input-item">
+        <ion-select label="Blood Group *" labelPlacement="floating" [(ngModel)]="bloodGroup" name="bloodGroup">
+          <ion-select-option *ngFor="let type of bloodTypes" [value]="type">
+            {{ type }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none" class="input-item">
+        <ion-input label="City" labelPlacement="floating" [(ngModel)]="city" name="city"></ion-input>
+      </ion-item>
+
+      <div class="search-button-wrapper">
+        <ion-button (click)="searchDonors()">
+          <ion-icon name="search" slot="start"></ion-icon>
+          Search
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="hospital-grid">
+
+      <ion-card class="hospital-card" *ngFor="let donor of donors">
+
+        <ion-card-header>
+          <ion-card-title>{{ donor.name }}</ion-card-title>
+          <ion-card-subtitle>{{ donor.city || donor.address }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="coordinates">
+            <div>
+              <span class="label">Blood Group</span>
+              <span class="value">{{ donor.bloodGroup }}</span>
+            </div>
+            <div>
+              <span class="label">Phone</span>
+              <span class="value">{{ donor.phone }}</span>
+            </div>
+            <div>
+              <span class="label">Last Donation</span>
+              <span class="value">
+                {{ donor.lastDonationDate ? (donor.lastDonationDate | date:'mediumDate') : 'Not Available' }}
+              </span>
+            </div>
+          </div>
+
+          <ion-button size="small">
+            Contact Donor
+          </ion-button>
+        </ion-card-content>
+
+      </ion-card>
+
+      <div *ngIf="searched && !loading && donors.length === 0">
+        No matching donors found.
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
+
