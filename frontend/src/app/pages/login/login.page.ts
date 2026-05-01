@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
 
@@ -16,14 +16,15 @@ import { AuthService } from '../../services/auth.service';
 export class LoginPage {
   email: string = '';
   password: string = '';
-  rememberMe: boolean = false;
-  showPassword: boolean = false;
+  rememberMe: boolean = true;
+  showPassword: boolean = true;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private alertController: AlertController,
     private authService: AuthService
-  ) {}
+  ) { }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -32,7 +33,10 @@ export class LoginPage {
   async onLogin() {
     if (this.email && this.password) {
       this.authService.login(this.email, this.password).subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => {
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+          this.router.navigateByUrl(returnUrl);
+        },
         error: async () => await this.showInvalidCredentialsAlert()
       });
     } else {
@@ -65,7 +69,7 @@ export class LoginPage {
   }
 
   goToSignup() {
-    
+
     console.log('Navigate to signup');
   }
 }
