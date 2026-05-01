@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://blood-donation-backend.onrender.com'  // Update with your Render URL
+  apiUrl: 'https://blood-donation-three-pi.vercel.app'
 };
