@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 interface DonorForm {
   fullName: string;
@@ -88,7 +89,7 @@ export class DonorRegistrationPage implements OnInit {
       donorType: this.donor.donorType
     };
 
-    this.http.post('http://localhost:3000/api/donors', payload).subscribe({
+    this.http.post(`${environment.apiUrl}/api/donors`, payload).subscribe({
       next: async () => {
         const toast = await this.toastController.create({
           message: 'Donor registered successfully',

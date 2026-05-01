@@ -31,11 +31,10 @@ export class LoginPage {
 
   async onLogin() {
     if (this.email && this.password) {
-      if (this.authService.login(this.email, this.password)) {
-        this.router.navigate(['/home']);
-      } else {
-        await this.showInvalidCredentialsAlert();
-      }
+      this.authService.login(this.email, this.password).subscribe({
+        next: () => this.router.navigate(['/home']),
+        error: async () => await this.showInvalidCredentialsAlert()
+      });
     } else {
       await this.showMissingCredentialsAlert();
     }

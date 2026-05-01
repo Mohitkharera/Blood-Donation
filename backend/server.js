@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Donor = require('./models/donor');
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkey';
 
 const app = express();
 
@@ -31,6 +34,10 @@ const Hospital = mongoose.model("Hospital",hospitalSchema);
    API ROUTES
 ========================= */
 
+app.get("/", (req, res) => {
+  res.send("Blood Donation Backend API is running successfully!");
+});
+
 /* Get Hospitals */
 
 // All possible blood types
@@ -45,22 +52,25 @@ function getRandomBloodTypes() {
 }
 
 app.get("/api/hospitals",async(req,res)=>{
-
-  const hospitals = await Hospital.find();
-  
-  // Add random blood types to hospitals that don't have them
-  const hospitalsWithBloodTypes = hospitals.map(hospital => {
-    const hospitalObj = hospital.toObject();
+  try {
+    const hospitals = await Hospital.find();
     
-    if (!hospitalObj.bloodTypes || hospitalObj.bloodTypes.length === 0) {
-      hospitalObj.bloodTypes = getRandomBloodTypes();
-    }
-    
-    return hospitalObj;
-  });
+    // Add random blood types to hospitals that don't have them
+    const hospitalsWithBloodTypes = hospitals.map(hospital => {
+      const hospitalObj = hospital.toObject();
+      
+      if (!hospitalObj.bloodTypes || hospitalObj.bloodTypes.length === 0) {
+        hospitalObj.bloodTypes = getRandomBloodTypes();
+      }
+      
+      return hospitalObj;
+    });
 
-  res.json(hospitalsWithBloodTypes);
-
+    res.json(hospitalsWithBloodTypes);
+  } catch (error) {
+    console.error("Error fetching hospitals:", error);
+    res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
 });
 
 /* Seed Hospitals (for testing) */
@@ -102,48 +112,65 @@ app.post("/api/hospitals/seed", async(req, res) => {
 /* Get Donors */
 
 app.get("/api/donors",async(req,res)=>{
-
-  const donors = await Donor.find();
-
-  res.json(donors);
-
+  try {
+    const donors = await Donor.find();
+    res.json(donors);
+  } catch (error) {
+    console.error("Error fetching donors:", error);
+    res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
 });
+
+/* Simple Login - returns JWT for valid credentials */
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+
+  // NOTE: keep behavior consistent with existing frontend hardcoded creds
+  if (username === 'admin001' && password === '12316845') {
+    const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '8h' });
+    return res.json({ token, username });
+  }
+
+  return res.status(401).json({ message: 'Invalid credentials' });
+});
+
+// Auth middleware
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) return res.status(401).json({ message: 'Missing token' });
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid token' });
+    req.user = user;
+    next();
+  });
+}
 
 /* =========================
    Donor Rewards (Points/Levels)
 ========================= */
 
-app.get("/api/donor-rewards", async (req, res) => {
+app.get("/api/donor-rewards", authenticateToken, async (req, res) => {
   try {
-    const donors = await Donor.find();
+    const donors = await Donor.find().lean();
 
-    const rewards = donors.map((d) => {
-      const parsedDonationCount = d && d.donationCount !== undefined && d.donationCount !== null
-        ? Number(d.donationCount)
-        : NaN;
-
-      const donationCount = !Number.isNaN(parsedDonationCount)
-        ? parsedDonationCount
-        : Math.floor(Math.random() * 25) + 1; // demo count (NOT saved)
-
+    const rewards = donors.map(d => {
+      const donationCount = d && d.donationCount && Number(d.donationCount) > 0 ? Number(d.donationCount) : 1;
       const points = donationCount * 50;
-
-      let level = 'Beginner Donor';
-      if (donationCount >= 20) {
-        level = 'Gold Donor';
-      } else if (donationCount >= 10) {
-        level = 'Silver Donor';
-      } else if (donationCount >= 5) {
-        level = 'Bronze Donor';
-      }
+      let badge = 'Beginner';
+      if (donationCount >= 20) badge = 'Gold';
+      else if (donationCount >= 10) badge = 'Silver';
+      else if (donationCount >= 5) badge = 'Bronze';
 
       return {
         name: d.name,
         bloodGroup: d.bloodGroup,
-        city: d.city || d.address,
-        phone: d.phone,
+        city: d.city || d.address || '',
         points,
-        level
+        badge,
+        donationCount
       };
     });
 
@@ -271,6 +298,10 @@ app.post("/api/donors", async (req, res) => {
 ========================= */
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT,()=>{
-console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT,()=>{
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

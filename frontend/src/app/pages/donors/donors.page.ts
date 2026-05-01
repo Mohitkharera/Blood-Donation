@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 import {
   IonContent,
@@ -54,7 +55,7 @@ export class DonorsPage implements OnInit {
 
   loadDonors() {
 
-    this.http.get("http://localhost:3000/api/donors")
+    this.http.get(`${environment.apiUrl}/api/donors`)
     .subscribe((data: any) => {
 
       /* First 15 donors not available */
