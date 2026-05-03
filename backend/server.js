@@ -152,7 +152,7 @@ function authenticateToken(req, res, next) {
    Donor Rewards (Points/Levels)
 ========================= */
 
-app.get("/api/donor-rewards", authenticateToken, async (req, res) => {
+app.get("/api/donor-rewards", async (req, res) => {
   try {
     const donors = await Donor.find().lean();
 
@@ -168,8 +168,10 @@ app.get("/api/donor-rewards", authenticateToken, async (req, res) => {
         name: d.name,
         bloodGroup: d.bloodGroup,
         city: d.city || d.address || '',
+        phone: d.phone,
         points,
         badge,
+        level: badge,
         donationCount
       };
     });

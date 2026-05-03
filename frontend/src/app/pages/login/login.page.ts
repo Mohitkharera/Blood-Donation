@@ -68,6 +68,10 @@ export class LoginPage {
     this.router.navigate(['/donors']);
   }
 
+  goToDonorRewards() {
+    this.router.navigate(['/donor-rewards']);
+  }
+
   goToSignup() {
 
     console.log('Navigate to signup');

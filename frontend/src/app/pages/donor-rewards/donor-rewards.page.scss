@@ -50,6 +50,27 @@
 .badge-desc { font-size: .78rem; color: var(--c-muted); line-height: 1.5; }
 .badge-card.locked-card { opacity: .6; }
 
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--c-muted);
+}
+.empty-icon {
+  font-size: 4rem;
+  color: var(--c-border);
+  margin-bottom: 1rem;
+}
+.empty-state h2 {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c-ink);
+  margin-bottom: 0.5rem;
+}
+.empty-state p {
+  font-size: 0.9rem;
+}
+
 @media (max-width: 480px) {
   .rewards-summary { grid-template-columns: 1fr; }
   .badges-grid { grid-template-columns: 1fr 1fr; }

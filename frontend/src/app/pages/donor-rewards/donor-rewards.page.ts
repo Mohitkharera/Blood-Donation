@@ -30,5 +30,13 @@ export class DonorRewardsPage implements OnInit {
       }
     });
   }
+
+  contactDonor(phone: string) {
+    if (phone) {
+      window.open(`tel:${phone}`, '_system');
+    } else {
+      console.log('No phone number available for this donor.');
+    }
+  }
 }
 
